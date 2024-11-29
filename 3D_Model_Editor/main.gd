@@ -18,18 +18,18 @@ onready var right_controller = get_node_or_null("/root/ARVROrigin/ARVRController
 
 # Reference to EditorDock
 var editor_dock
-var editor_dock_scene = preload("res://addons/vr_model_edit3D/EditorDock.tscn")
+var editor_dock_scene = preload("res://addons/3D_Model_Editor/EditorDock.tscn")
 
 func _enter_tree():
     # Load and instantiate tools
-    select_tool = preload("res://addons/vr_model_edit3D/tools/SelectTool.gd").new()
-    move_tool = preload("res://addons/vr_model_edit3D/tools/MoveTool.gd").new()
-    rotate_tool = preload("res://addons/vr_model_edit3D/tools/RotateTool.gd").new()
-    scale_tool = preload("res://addons/vr_model_edit3D/tools/ScaleTool.gd").new()
-    cube_tool = preload("res://addons/vr_model_edit3D/tools/CubeTool.gd").new()
-    sphere_tool = preload("res://addons/vr_model_edit3D/tools/SphereTool.gd").new()
-    plane_tool = preload("res://addons/vr_model_edit3D/tools/PlaneTool.gd").new()
-    import_tool = preload("res://addons/vr_model_edit3D/tools/ImportTool.gd").new()
+    select_tool = preload("res://addons/3D_Model_Editor/tools/SelectTool.gd").new()
+    move_tool = preload("res://addons/3D_Model_Editor/tools/MoveTool.gd").new()
+    rotate_tool = preload("res://addons/3D_Model_Editor/tools/RotateTool.gd").new()
+    scale_tool = preload("res://addons/3D_Model_Editor/tools/ScaleTool.gd").new()
+    cube_tool = preload("res://addons/3D_Model_Editor/tools/CubeTool.gd").new()
+    sphere_tool = preload("res://addons/3D_Model_Editor/tools/SphereTool.gd").new()
+    plane_tool = preload("res://addons/3D_Model_Editor/tools/PlaneTool.gd").new()
+    import_tool = preload("res://addons/3D_Model_Editor/tools/ImportTool.gd").new()
     
     # Add tools as children to ensure they are part of the scene and can process inputs
     add_child(select_tool)
@@ -109,5 +109,5 @@ func _exit_tree():
     
     # If you added UI elements like docks, remove them here as well
     # Example:
-    # if is_plugin_enabled("res://addons/vr_model_edit3D/EditorDock.tscn"):
-    #     remove_control_from_dock(preload("res://addons/vr_model_edit3D/EditorDock.tscn").instance())
+    # if is_plugin_enabled("res://addons/3D_Model_Editor/EditorDock.tscn"):
+    #     remove_control_from_dock(preload("res://addons/3D_Model_Editor/EditorDock.tscn").instance())

@@ -1,11 +1,13 @@
-# res://addons/vr_model_editor/EditorDock.gd
-
 extends VBoxContainer
 
 # Tool references (set externally)
 var main_plugin = null
 
 func _ready():
+    # Print initialization debug information
+    print("EditorDock initialized.")
+    print("Main plugin: ", main_plugin)
+    
     # Connect shape creation buttons
     $HBoxContainer/Button_Create_Cube.connect("pressed", self, "_on_create_cube_pressed")
     $HBoxContainer/Button_Create_Sphere.connect("pressed", self, "_on_create_sphere_pressed")
@@ -23,28 +25,10 @@ func _ready():
     # Initialize tool states
     _update_tool_buttons()
 
-# Callback functions for shape creation
-func _on_create_cube_pressed():
-    if main_plugin and main_plugin.cube_tool:
-        main_plugin.cube_tool.create_cube()
-    else:
-        push_error("CubeTool not initialized.")
-        
-func _on_create_sphere_pressed():
-    if main_plugin and main_plugin.sphere_tool:
-        main_plugin.sphere_tool.create_sphere()
-    else:
-        push_error("SphereTool not initialized.")
-        
-func _on_create_plane_pressed():
-    if main_plugin and main_plugin.plane_tool:
-        main_plugin.plane_tool.create_plane()
-    else:
-        push_error("PlaneTool not initialized.")
-
 # Callback functions for manipulation tools
 func _on_select_tool_pressed():
     if main_plugin and main_plugin.select_tool:
+        print("Activating SelectTool")
         main_plugin.select_tool.activate_tool()
         _update_tool_buttons(active_tool="select")
     else:
@@ -52,6 +36,7 @@ func _on_select_tool_pressed():
 
 func _on_move_tool_pressed():
     if main_plugin and main_plugin.move_tool:
+        print("Activating MoveTool")
         main_plugin.move_tool.activate_tool()
         _update_tool_buttons(active_tool="move")
     else:
@@ -59,6 +44,7 @@ func _on_move_tool_pressed():
 
 func _on_rotate_tool_pressed():
     if main_plugin and main_plugin.rotate_tool:
+        print("Activating RotateTool")
         main_plugin.rotate_tool.activate_tool()
         _update_tool_buttons(active_tool="rotate")
     else:
@@ -66,6 +52,7 @@ func _on_rotate_tool_pressed():
 
 func _on_scale_tool_pressed():
     if main_plugin and main_plugin.scale_tool:
+        print("Activating ScaleTool")
         main_plugin.scale_tool.activate_tool()
         _update_tool_buttons(active_tool="scale")
     else:
@@ -73,17 +60,17 @@ func _on_scale_tool_pressed():
 
 # Callback for import model
 func _on_import_model_pressed():
-    # Open a file dialog to select a model to import
     var file_dialog = FileDialog.new()
     file_dialog.mode = FileDialog.MODE_OPEN_FILE
     file_dialog.access = FileDialog.ACCESS_FILESYSTEM
     file_dialog.filters = ["*.obj ; Wavefront OBJ", "*.glb ; GLTF Binary", "*.gltf ; GLTF Text", "*.fbx ; FBX"]
     file_dialog.connect("file_selected", self, "_on_model_selected")
-    add_child(file_dialog)
+    get_tree().root.add_child(file_dialog)  # Add to the root
     file_dialog.popup_centered()
 
 func _on_model_selected(path):
     if main_plugin and main_plugin.import_tool:
+        print("Importing model from path: ", path)
         main_plugin.import_tool.import_model(path)
     else:
         push_error("ImportTool not initialized.")
@@ -107,4 +94,4 @@ func _update_tool_buttons(active_tool = null):
         "scale":
             $HBoxContainer_1/Button_Scale.modulate = Color(0.8, 0.8, 1)
         _:
-            pass
+            print("Unknown tool: ", active_tool)

@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=2]
+
+[node name="EditorDock" type="VBoxContainer"]
+
+# Label Title
+[node name="Label_Title" type="Label" parent="."]
+text = "VR Model Editor"
+rect_min_size = Vector2(300, 30)
+align = "center"
+valign = "center"
+
+# HBoxContainer for Shape Buttons
+[node name="HBoxContainer_Shapes" type="HBoxContainer" parent="."]
+rect_min_size = Vector2(300, 40)
+anchor_left = 0
+anchor_right = 1
+anchor_top = 0
+anchor_bottom = 1
+margin_left = 0
+margin_right = 0
+margin_top = 0
+margin_bottom = 0
+
+# Button_Create_Cube
+[node name="Button_Create_Cube" type="Button" parent="HBoxContainer_Shapes"]
+text = "Create Cube"
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+# Button_Create_Sphere
+[node name="Button_Create_Sphere" type="Button" parent="HBoxContainer_Shapes"]
+text = "Create Sphere"
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+# Button_Create_Plane
+[node name="Button_Create_Plane" type="Button" parent="HBoxContainer_Shapes"]
+text = "Create Plane"
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+# HBoxContainer for Manipulation Tools
+[node name="HBoxContainer_Manipulation" type="HBoxContainer" parent="."]
+rect_min_size = Vector2(300, 40)
+anchor_left = 0
+anchor_right = 1
+anchor_top = 0
+anchor_bottom = 1
+margin_left = 0
+margin_right = 0
+margin_top = 0
+margin_bottom = 0
+
+# Button_Select
+[node name="Button_Select" type="Button" parent="HBoxContainer_Manipulation"]
+text = "Select"
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+# Button_Move
+[node name="Button_Move" type="Button" parent="HBoxContainer_Manipulation"]
+text = "Move"
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+# Button_Rotate
+[node name="Button_Rotate" type="Button" parent="HBoxContainer_Manipulation"]
+text = "Rotate"
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+# Button_Scale
+[node name="Button_Scale" type="Button" parent="HBoxContainer_Manipulation"]
+text = "Scale"
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+# HBoxContainer for Import Button
+[node name="HBoxContainer_Import" type="HBoxContainer" parent="."]
+rect_min_size = Vector2(300, 40)
+anchor_left = 0
+anchor_right = 1
+anchor_top = 0
+anchor_bottom = 1
+margin_left = 0
+margin_right = 0
+margin_top = 0
+margin_bottom = 0
+
+# Button_Import_Model
+[node name="Button_Import_Model" type="Button" parent="HBoxContainer_Import"]
+text = "Import Model"
+size_flags_horizontal = 1
+size_flags_vertical = 1
